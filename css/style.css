@@ -1341,6 +1341,35 @@ body {
         left: 0;
     }
 
+    .nav-menu .dropdown {
+        width: 100%;
+    }
+
+    .nav-menu .dropdown > a {
+        justify-content: space-between;
+    }
+
+    .nav-menu .dropdown-menu {
+        position: static;
+        width: 100%;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none;
+    }
+
+    .nav-menu .dropdown.open .dropdown-menu {
+        display: block;
+    }
+
+    .nav-menu .dropdown-menu a {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+
     .nav-toggle {
         display: flex;
     }

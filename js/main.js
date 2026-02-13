@@ -26,6 +26,7 @@ document.addEventListener('click', (e) => {
     if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
         navMenu.classList.remove('active');
         navToggle.classList.remove('active');
+        document.querySelectorAll('.dropdown.open').forEach(dropdown => dropdown.classList.remove('open'));
     }
 });
 
@@ -35,6 +36,25 @@ navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
         navToggle.classList.remove('active');
+        document.querySelectorAll('.dropdown.open').forEach(dropdown => dropdown.classList.remove('open'));
+    });
+});
+
+// Dropdown toggle on mobile (for Services menu)
+const dropdownLinks = document.querySelectorAll('.dropdown > a');
+dropdownLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 968) {
+            e.preventDefault();
+            const parentDropdown = link.parentElement;
+            const isOpen = parentDropdown.classList.contains('open');
+
+            document.querySelectorAll('.dropdown.open').forEach(dropdown => dropdown.classList.remove('open'));
+
+            if (!isOpen) {
+                parentDropdown.classList.add('open');
+            }
+        }
     });
 });
 
@@ -292,7 +312,9 @@ function addToCalendar() {
 if ('loading' in HTMLImageElement.prototype) {
     const images = document.querySelectorAll('img[loading="lazy"]');
     images.forEach(img => {
-        img.src = img.dataset.src;
+        if (img.dataset && img.dataset.src) {
+            img.src = img.dataset.src;
+        }
     });
 } else {
     // Fallback for older browsers
