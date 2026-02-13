@@ -1424,12 +1424,13 @@ body {
 
     .hero-buttons {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+        width: 100%;
     }
 
     .btn {
         width: 100%;
-        max-width: 300px;
+        max-width: none;
         justify-content: center;
     }
 
